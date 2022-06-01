@@ -18,7 +18,7 @@ Widget AppText({
     text,
     textAlign: alignCenter == true ? TextAlign.center : null,
     maxLines: maxLines == 0 ? null : maxLines,
-    overflow: overflow == true ? TextOverflow.fade : null,
+    overflow: overflow == true ? TextOverflow.ellipsis : null,
     style: TextStyle(
       height: interline,
       color: color,

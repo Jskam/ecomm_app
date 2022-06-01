@@ -1,6 +1,4 @@
-import 'package:ecomm_app/screens/auth/login/login_screen.dart';
 import 'package:ecomm_app/screens/bottom_navigation.dart';
-import 'package:ecomm_app/screens/product/product_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {

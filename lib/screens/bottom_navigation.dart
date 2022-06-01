@@ -2,6 +2,7 @@ import 'package:ecomm_app/config/app_colors.dart';
 import 'package:ecomm_app/screens/favorite/favorite_screen.dart';
 import 'package:ecomm_app/screens/home/home_screen.dart';
 import 'package:ecomm_app/screens/product/product_screen.dart';
+import 'package:ecomm_app/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -34,11 +35,11 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     return Scaffold(
       body: IndexedStack(
         index: _selectedTab,
-        children: [
+        children: const [
           HomeScreen(),
-          const FavoriteScreen(),
-          const ProductScreen(),
-          HomeScreen(),
+          FavoriteScreen(),
+          ProductScreen(),
+          ProfileScreen(),
         ],
       ),
       bottomNavigationBar: Container(

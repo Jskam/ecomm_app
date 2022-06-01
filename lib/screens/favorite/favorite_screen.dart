@@ -1,8 +1,8 @@
 import 'package:ecomm_app/config/app_colors.dart';
 import 'package:ecomm_app/utils/app_text.dart';
 import 'package:ecomm_app/widgets/custom_appbar.dart';
-import 'package:ecomm_app/widgets/label_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({Key? key}) : super(key: key);
@@ -100,8 +100,12 @@ class _FavoriteCardWidget extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              LabelButton(icon: Icons.highlight_remove_outlined),
-              LabelButton(icon: Icons.shopping_bag_outlined),
+              TextButton(
+                  onPressed: () {},
+                  child: SvgPicture.asset('assets/svg/close.svg', width: 30)),
+              TextButton(
+                  onPressed: () {},
+                  child: SvgPicture.asset('assets/svg/toCart.svg', width: 30)),
             ],
           ),
         ],
