@@ -8,11 +8,11 @@ Widget ChooseColorCircle({
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: CircleAvatar(
-      radius: 22,
+      radius: 18,
       backgroundColor:
           isChoose ? const Color(0xff909090) : const Color(0xffF0F0F0),
       child: CircleAvatar(
-        radius: 16,
+        radius: 14,
         backgroundColor: color,
       ),
     ),

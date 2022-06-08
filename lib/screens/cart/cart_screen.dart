@@ -3,8 +3,8 @@ import 'package:ecomm_app/widgets/divider.dart';
 import 'package:ecomm_app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
-class FavoriteScreen extends StatelessWidget {
-  const FavoriteScreen({Key? key}) : super(key: key);
+class CartScreen extends StatelessWidget {
+  const CartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +14,9 @@ class FavoriteScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: CustomAppBar(
         controller: controller,
-        title: 'Favorites',
-        leadingSvg: 'assets/svg/search.svg',
-        actionSvg: 'assets/svg/cart.svg',
+        title: 'My cart',
+        leadingSvg: 'assets/svg/left.svg',
+        leading: () => Navigator.pop(context),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -28,7 +28,7 @@ class FavoriteScreen extends StatelessWidget {
               itemCount: 14,
               shrinkWrap: true,
               itemBuilder: (context, index) =>
-                  const ProductCardWidget(isOnCart: false),
+                  const ProductCardWidget(isOnCart: true),
               separatorBuilder: (context, index) => const DividerWidget(),
             ),
           ),

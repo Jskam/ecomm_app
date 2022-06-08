@@ -1,22 +1,24 @@
 import 'package:ecomm_app/config/app_colors.dart';
-import 'package:ecomm_app/utils/app_text.dart';
+import 'package:ecomm_app/navigation.dart';
+import 'package:ecomm_app/utils/topography.dart';
 import 'package:ecomm_app/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
     final controller = ScrollController();
     return Scaffold(
       appBar: CustomAppBar(
-        controller: controller,
-        title: 'BEAUTIFUL',
-        subTitle: 'Make home',
-        leadingSvg: 'assets/svg/search.svg',
-        actionSvg: 'assets/svg/cart.svg',
-      ),
+          controller: controller,
+          title: 'BEAUTIFUL',
+          subTitle: 'Make home',
+          leadingSvg: 'assets/svg/search.svg',
+          actionSvg: 'assets/svg/cart.svg',
+          action: () =>
+              Navigator.pushNamed(context, MainNavigationRouteNames.cart)),
       backgroundColor: white,
       body: SingleChildScrollView(
         controller: controller,
@@ -24,10 +26,10 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: const [
               SizedBox(height: 20),
-              _ListViewBuilderWidget(),
+              _CategoryListWidget(),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 30),
-                child: _GridViewBuilderWidget(),
+                child: _ProductGridWidget(),
               ),
             ],
           ),
@@ -37,8 +39,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _GridViewBuilderWidget extends StatelessWidget {
-  const _GridViewBuilderWidget({Key? key}) : super(key: key);
+class _ProductGridWidget extends StatelessWidget {
+  const _ProductGridWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -66,14 +68,14 @@ class _GridViewBuilderWidget extends StatelessWidget {
   }
 }
 
-class _ListViewBuilderWidget extends StatelessWidget {
-  const _ListViewBuilderWidget({Key? key}) : super(key: key);
+class _CategoryListWidget extends StatelessWidget {
+  const _CategoryListWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 83,
+      height: 80,
       child: ListView.builder(
         itemCount: 12,
         physics: const BouncingScrollPhysics(),
@@ -85,11 +87,11 @@ class _ListViewBuilderWidget extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  width: 60,
-                  height: 60,
+                  width: 55,
+                  height: 55,
                   child: const Icon(
                     Icons.star_rounded,
-                    size: 48,
+                    size: 44,
                     color: Color(0xff909090),
                   ),
                   decoration: BoxDecoration(
@@ -98,7 +100,7 @@ class _ListViewBuilderWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 3),
-                AppText(size: 16, text: 'Category'),
+                Text('Category', style: Topography().bodyText())
               ],
             ),
           );

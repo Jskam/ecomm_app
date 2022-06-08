@@ -7,15 +7,20 @@ Widget LabelButton({
   String? label,
   IconData? icon,
   double labelSize = 22,
+  Color? background,
 }) {
-  return TextButton(
-    onPressed: () {},
+  return InkWell(
     child: label != null
         ? AppText(
             size: labelSize,
             text: label,
             weight: FontWeight.w600,
           )
-        : Icon(icon, color: black, size: 30),
+        : Material(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            color: background,
+            child: Icon(icon, color: black, size: 30)),
   );
 }

@@ -1,5 +1,5 @@
 import 'package:ecomm_app/config/app_colors.dart';
-import 'package:ecomm_app/utils/app_text.dart';
+import 'package:ecomm_app/utils/topography.dart';
 import 'package:ecomm_app/widgets/background_button.dart';
 import 'package:ecomm_app/widgets/choose_color_circle.dart';
 import 'package:flutter/material.dart';
@@ -16,20 +16,13 @@ class ProductScreen extends StatelessWidget {
           SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * .60,
-                  child: const Align(
-                    alignment: Alignment.centerRight,
-                    child: _ProductImageWidget(),
-                  ),
-                ),
-                const _ProductInfoWidget(),
+              children: const [
+                _ProductImageWidget(),
+                _ProductInfoWidget(),
               ],
             ),
           ),
           const _ProductBackButtonWidget(),
-          const _ProductChooseColorWidget(),
         ],
       ),
     );
@@ -47,7 +40,7 @@ class _ProductBackButtonWidget extends StatelessWidget {
       child: Container(
         child: IconButton(
           onPressed: () {},
-          iconSize: 42,
+          iconSize: 38,
           alignment: Alignment.center,
           icon: const Icon(
             Icons.keyboard_arrow_left,
@@ -81,41 +74,23 @@ class _ProductInfoWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppText(
-            size: 24,
-            text: 'Extra Light Lamp',
-            fontFamily: 'Gelasio',
-            weight: FontWeight.w500,
-          ),
+          Text('Extra Light Lamp', style: Topography().labelText()),
           const SizedBox(height: 5),
-          Row(
-            children: [
-              AppText(
-                size: 34,
-                text: '\$ 50',
-                weight: FontWeight.w600,
-              ),
-            ],
-          ),
+          Text('\$ 50', style: Topography().largeText()),
           const SizedBox(height: 5),
           Row(
             children: [
               const Icon(Icons.star, color: yellow),
               const SizedBox(width: 10),
-              AppText(size: 20, text: '4.5', weight: FontWeight.w600),
+              Text('4.5', style: Topography().upperBodyText()),
               const SizedBox(width: 20),
-              AppText(size: 18, text: '(50 reviews)', color: secondaryText),
+              Text('(50 reviews)', style: Topography().descriptionText()),
             ],
           ),
           const SizedBox(height: 10),
-          Container(
-            child: AppText(
-              color: const Color(0xff606060),
-              interline: 1.5,
-              size: 16,
-              text:
-                  'Minimal Stand is made of by natural wood. The design that is very simple and minimal. This is truly one of the best furnitures in any family for now. With 3 different colors, you can easily select the best match for your home. ',
-            ),
+          Text(
+            'Minimal Stand is made of by natural wood. The design that is very simple and minimal. This is truly one of the best furnitures in any family for now. With 3 different colors, you can easily select the best match for your home. ',
+            style: Topography().descriptionText(),
           ),
           const SizedBox(height: 20),
           Row(
@@ -125,7 +100,7 @@ class _ProductInfoWidget extends StatelessWidget {
                 icon: Icons.bookmark_outline,
                 width: 60,
                 height: 55,
-                color: Color(0xffF0F0F0),
+                color: lightGray,
                 iconSize: 30,
               ),
               BackgroundButton(
@@ -146,31 +121,27 @@ class _ProductChooseColorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: 20,
-      top: 150,
-      child: Container(
-        decoration: BoxDecoration(
-          color: white,
-          borderRadius: BorderRadius.circular(40),
-          boxShadow: [
-            BoxShadow(
-              color: shadow,
-              blurRadius: 40,
-              spreadRadius: 0,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // TODO: ListView.builder ///////////////////////////////////////
-            ChooseColorCircle(color: Colors.deepOrange, isChoose: true),
-            ChooseColorCircle(color: Colors.green),
-            ChooseColorCircle(color: Colors.lightBlue),
-          ],
-        ),
+    return Container(
+      decoration: BoxDecoration(
+        color: white,
+        borderRadius: BorderRadius.circular(40),
+        boxShadow: [
+          BoxShadow(
+            color: shadow,
+            blurRadius: 40,
+            spreadRadius: 0,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+         
+          ChooseColorCircle(color: Colors.deepOrange, isChoose: true),
+          ChooseColorCircle(color: Colors.green),
+          ChooseColorCircle(color: Colors.lightBlue),
+        ],
       ),
     );
   }
@@ -181,18 +152,34 @@ class _ProductImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      right: 0,
-      bottom: 0,
-      top: 0,
-      child: Container(
-        child: Image.asset('assets/images/image.png', fit: BoxFit.cover),
-        clipBehavior: Clip.hardEdge,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(50),
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * .60,
+      child: Stack(
+        children: [
+          const Positioned(
+            left: 20,
+            bottom: 0,
+            child: _ProductChooseColorWidget(),
           ),
-        ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Positioned(
+              right: 0,
+              bottom: 0,
+              top: 0,
+              child: Container(
+                child:
+                    Image.asset('assets/images/image.png', fit: BoxFit.cover),
+                clipBehavior: Clip.hardEdge,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(50),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

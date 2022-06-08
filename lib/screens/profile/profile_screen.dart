@@ -1,6 +1,6 @@
 import 'package:ecomm_app/config/app_colors.dart';
-import 'package:ecomm_app/screens/profile/local_widgets/profile_card.dart';
-import 'package:ecomm_app/utils/app_text.dart';
+import 'package:ecomm_app/widgets/profile_card.dart';
+import 'package:ecomm_app/utils/topography.dart';
 import 'package:ecomm_app/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class ProfileScreen extends StatelessWidget {
         actionSvg: 'assets/svg/exit.svg',
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
@@ -34,16 +34,9 @@ class ProfileScreen extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AppText(
-                        size: 24,
-                        text: 'Bruno Pham',
-                        weight: FontWeight.bold,
-                      ),
-                      AppText(
-                        size: 20,
-                        text: 'bruno203@gmail.com',
-                        color: secondaryText,
-                      ),
+                      Text('Bruno Pham', style: Topography().labelText()),
+                      Text('bruno203@gmail.com',
+                          style: Topography().descriptionText()),
                     ],
                   )
                 ],
